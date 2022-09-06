@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translator</title>
+</head>
+<body>
+    <textarea id="input" cols="120" rows="30">document.getElementsByTagName('article')[0].innerText</textarea>
+    <button onclick="enter();">enter</button>
+    <button onclick="enterYoutube();">youtube</button>
+    <div id="output"></div>
+    <script>
+        function enter() {
+            var input = document.getElementById("input").value;
+            var text = input.split('\n');
+            var output = "";
+            for (var i = 0; i < text.length; i++) {
+                output += "<p>" + text[i] + "</p>"; 
+                output += "<p class='notranslate'>" + text[i] + "</p>"; 
+            }
+            document.getElementById("output").innerHTML = output;
+        }
+
+        function enterYoutube() {
+            var input = document.getElementById("input").value;
+            var text = input.replace(/\n/gi, " ");
+            text = text.replace(/\./gi, ".\n");
+            text = text.replace(/\?/gi, "?\n");
+            text = text.replace(/\!/gi, "?\n");
+            text = text.split('\n');
+            var output = "";
+            for (var i = 0; i < text.length; i++) {
+                output += "<p>" + text[i] + "</p>"; 
+                output += "<p class='notranslate'>" + text[i] + "</p>"; 
+            }
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
+</body>
+</html>
